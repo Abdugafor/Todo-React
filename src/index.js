@@ -49,4 +49,4 @@ root.render(
   <React.StrictMode>
     <All/>
   </React.StrictMode>
-);
+)
