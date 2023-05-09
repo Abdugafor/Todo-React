@@ -1,0 +1,24 @@
+.relative {
+    position: relative;
+}
+
+.createTodoInput {
+    padding: 20px 20px 20px 65px;
+    width: 100%;
+    background: hsl(235, 24%, 19%);
+    border:  none;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.circle {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid grey;
+    background: inherit;
+}

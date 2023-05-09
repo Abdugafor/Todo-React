@@ -1,0 +1,28 @@
+.width {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.block {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 4px 4px 14px 4px rgba(0, 0, 0, 0.219);
+  width: 200px;
+  padding: 50px;
+}
+
+.btn {
+   border-radius: 3px;
+   border: none;
+   background: #222;
+   color: white;
+   padding: 5px 10px;
+   font-size: 15px;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+
+.btn:hover {
+  background: rgb(224, 224, 224);
+  color: black;
+}
