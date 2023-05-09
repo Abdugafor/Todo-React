@@ -1,0 +1,12 @@
+button {
+    color: hsl(236, 9%, 61%);
+    font-weight: 700;
+}
+
+button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.active {
+    color: rgba(98, 98, 209, 0.444);
+}

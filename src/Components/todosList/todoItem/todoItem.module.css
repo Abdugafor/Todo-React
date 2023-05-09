@@ -1,7 +1,48 @@
 
-
-
 .listItem {
+    display: flex;
+    align-items: center;
     padding: 20px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.445);
+}
+
+label {
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+
+
+li input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: inherit;
+    border: 1px solid grey;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+li input:after {
+    content: url('./icon-check.svg');
+    margin-top: 2px;
+    display: none;
+}
+
+li input:checked {
+    background: linear-gradient( hsl(192, 100%, 67%) , hsl(280, 87%, 65%));
+}
+
+li input:checked:after {
+    display: block;
+}
+
+.done {
+    text-decoration: line-through;
+    color: grey;
 }
