@@ -6,10 +6,12 @@ import styles from './container.module.css'
 
 
 const TODOLIST = [
-    {title: 'Wash the dishes', done: false ,id: 1},
-    {title: 'Go for a walk', done: true ,id: 2},
-    {title: 'Programming assignment', done: false ,id: 3},
+    {title: 'Wash the dishes', done: false},
+    {title: 'Go for a walk', done: true},
+    {title: 'Programming assignment', done: false},
 ]
+
+// .map(item => ({...item, id: generateRandomString()}))
 
 export function Container() {
     const [list, setList] = useState(TODOLIST)
