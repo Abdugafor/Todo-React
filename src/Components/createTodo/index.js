@@ -1,3 +1,3 @@
-// import { MyInput } from "./createTodo";
+import { MyInput } from "./createTodo";
 
-// export default MyInput
+export default MyInput
