@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import Header from "../header";
-import { MyInput } from "../createTodo/createTodo";
 import TodosList from "../todosList";
 import styles from './container.module.css'
+import MyInput from "../createTodo";
 import generateRandomString from "../../utils/generateRandomIndex";
 
 
@@ -23,6 +23,11 @@ export function Container() {
             e.currentTarget.value = ''
         }
     }
+
+    const changeDone = (todo) => {
+        console.log('true')
+    }
+
    return (
        <div className={styles.container}>
             <Header/>
@@ -33,7 +38,7 @@ export function Container() {
                 onKeyDown={handleClick}
             />
 
-            <TodosList list={list}/>
+            <TodosList list={list} func={changeDone}/>
             
        </div>
     )

@@ -7,9 +7,8 @@ function App() {
   
   return (
     <>
-      {/* <BackgroundImage />
-      <Container/> */}
-      hello
+      <BackgroundImage />
+      <Container/>
     </>
   )
 }
