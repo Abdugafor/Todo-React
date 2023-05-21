@@ -42,7 +42,6 @@ function App() {
   const addDoneClass = (e) => {
     if (e.target.type === 'checkbox') {
       const currentTodo = list.filter(item => item.id === e.target.id)[0]
-
       setList((props) => ({...props, }))
     }
   }
