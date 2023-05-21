@@ -38,14 +38,6 @@ function App() {
   const clearDoneTodos = () => {
     setList(list.filter(item => !item.done))
   }
-
-  const addDoneClass = (e) => {
-    if (e.target.type === 'checkbox') {
-      const currentTodo = list.filter(item => item.id === e.target.id)[0]
-      setList((props) => ({...props, }))
-    }
-  }
-
   return (
     <>
       <BackgroundImage img={isDark} />
@@ -61,7 +53,7 @@ function App() {
 
         <TodosList list={list}>
           {list.map((todo, index) => 
-                  <TodoItem todo={todo} addClassDoneFunc={addDoneClass}/>
+                  <TodoItem todo={todo} />
               )}
 
           <TodoBottom list={list}>
@@ -75,4 +67,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
