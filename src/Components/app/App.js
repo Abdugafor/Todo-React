@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import BackgroundImage from '../backgroundImage';
 import Container from '../Container';
 import './App.css'
@@ -12,15 +12,17 @@ import TodoItem from "../todosList/todoItem";
 
 
 const TODOLIST = [
-  {title: 'Wash the dishes', done: false ,id: 1},
-  {title: 'Go for a walk', done: true ,id: 2},
-  {title: 'Programming assignment', done: false ,id: 3},
+  {title: 'Wash the dishes', done: false },
+  {title: 'Go for a walk', done: false },
+  {title: 'Programming assignment', done: false},
 ].map(item => ({...item, id: generateRandomString()}))
 
 function App() {
   const [list, setList] = useState(TODOLIST)
   const [isDark, setIsDark] = useState(true)
+
   const inputRef = useRef()
+  
   
 
   const addTodo = (e) => {
@@ -38,6 +40,11 @@ function App() {
   const clearDoneTodos = () => {
     setList(list.filter(item => !item.done))
   }
+
+  const changeDone = (e) => {
+    console.log(e.currentTarget)
+  }
+
   return (
     <>
       <BackgroundImage img={isDark} />
@@ -53,7 +60,7 @@ function App() {
 
         <TodosList list={list}>
           {list.map((todo, index) => 
-                  <TodoItem todo={todo} />
+                  <TodoItem todo={todo} func={changeDone}/>
               )}
 
           <TodoBottom list={list}>
