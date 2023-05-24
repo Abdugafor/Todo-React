@@ -14,7 +14,7 @@ export function TodoItem({todo , func}) {
                     type="checkbox" 
                     id={todo.id} 
                     checked={checked} 
-                    onClick={handleClick} 
+                    onClick={func} 
                 />
                 <label 
                     for={todo.id} 
