@@ -44,7 +44,6 @@ function App() {
   const changeDone = (e) => {
     const currentTodo = list.filter(item => item.id === e.currentTarget.id).map(item => ({...item, done: !item.done}))[0]
     // setList((todos) => ({...todos, currentTodo}))
-    console.log(currentTodo)
   }
 
   return (
