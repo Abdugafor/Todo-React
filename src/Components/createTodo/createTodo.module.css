@@ -21,4 +21,24 @@
     border-radius: 50%;
     border: 1px solid grey;
     background: inherit;
+    cursor: pointer;
 }
+
+.darkTheme {
+    background: hsl(0, 0%, 98%);
+    color: black;
+}
+
+@media all and (max-width: 900px) {
+    .createTodoInput {
+        font-size: 14px;
+        padding: 15px 18px 15px 50px;
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+
+    }
+}
+

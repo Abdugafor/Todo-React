@@ -8,3 +8,11 @@
     color: rgba(128, 128, 128, 0.871);
 }
 
+@media all and (max-width: 900px) {
+    .todoBottom {
+        padding: 15px;
+        font-size: 10px;
+    }
+
+ 
+}

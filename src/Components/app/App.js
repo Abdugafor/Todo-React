@@ -23,7 +23,6 @@ function App() {
 
   const inputRef = useRef()
   
-  
 
   const addTodo = (e) => {
     const inputValue = e.currentTarget.value
@@ -31,6 +30,15 @@ function App() {
         setList(list.concat({title: inputValue, id: generateRandomString()}))
         e.currentTarget.value = ''
     }
+  }
+
+  const addTodoClick = (e) => {
+    console.log('good')
+    // const inputValue = e.currentTarget.value
+    
+    // setList(list.concat({title: inputValue, id: generateRandomString()}))
+    // e.currentTarget.value = ''
+    
   }
 
   const changeBgImage = () => {
@@ -42,12 +50,14 @@ function App() {
   }
 
   const changeDone = (e) => {
-    const currentTodo = list.filter(item => item.id === e.currentTarget.id).map(item => ({...item, done: !item.done}))[0]
-    // setList((todos) => ({...todos, currentTodo}))
+
+    const TodoId = e.currentTarget.id
+    setList(prev => prev.map(item => item.id === TodoId ? {...item, done: !item.done} : item))
+
   }
 
   return (
-    <>
+    <div className={isDark ? "bg-dark" : "bg-light"}>
       <BackgroundImage img={isDark} />
       <Container>
 
@@ -57,8 +67,9 @@ function App() {
           ref={inputRef}
           placeholder="Create a new todo..."
           onKeyDown={addTodo}
+          isDark={isDark}
+          
         />
-
         <TodosList list={list}>
           {list.map((todo, index) => 
                   <TodoItem todo={todo} func={changeDone}/>
@@ -71,7 +82,7 @@ function App() {
         </TodosList>
       </Container>
   
-    </>
+    </div>
   )
 }
 

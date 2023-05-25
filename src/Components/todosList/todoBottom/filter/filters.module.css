@@ -10,3 +10,9 @@ button:not(:last-child) {
 .active {
     color: rgba(98, 98, 209, 0.444);
 }
+
+@media all and (max-width: 900px) {
+    button {
+        font-size: 10px;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react"
 import styles from './createTodo.module.css'
 
-const  MyInput = React.forwardRef((props, ref) => {
+const  MyInput = React.forwardRef((props, ref, isDark, func) => {
     return (
         <div className={styles.relative}>
              <input 
@@ -9,7 +9,7 @@ const  MyInput = React.forwardRef((props, ref) => {
                 className={styles.createTodoInput}
                 {...props}
             />
-            <div className={styles.circle}></div>
+            <div className={styles.circle} onClick={func}></div>
         </div>
        
     )
