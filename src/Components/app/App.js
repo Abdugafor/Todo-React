@@ -20,7 +20,6 @@ const TODOLIST = [
 function App() {
   const [list, setList] = useState(TODOLIST)
   const [isDark, setIsDark] = useState(true)
-
   const inputRef = useRef()
   
   
@@ -42,7 +41,8 @@ function App() {
   }
 
   const changeDone = (e) => {
-    console.log(e.currentTarget)
+    const todoId = e.currentTarget.id
+    // С помошью хука setList найти todo который был выполнен и изменить
   }
 
   return (
