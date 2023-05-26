@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from  './filters.module.css'
 
 export function Filters({isActive, clickFunc}) {
-   
 
     return (
         <div className={styles.filter}>

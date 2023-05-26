@@ -1,29 +1,20 @@
 import React from "react"
 import styles from './createTodo.module.css'
 
-// const  MyInput = React.forwardRef((props, ref,  func , isDark) => {
-//     return (
-//         <div className={styles.relative}>
-//              <input 
-//                 className={isDark ? styles.createTodoInputDark : styles.createTodoInputLight}
-//                 {...props}
-//             />
-//             <div className={styles.circle} onClick={func}></div>
-//         </div>
-       
-//     )
-// })
 
-function MyInput({props, ref,  func , isDark}) {
+function MyInput({props, ref,  func , isDark, info}) {
     return (
         <div className={styles.relative}>
              <input 
                 className={isDark ? styles.createTodoInputDark : styles.createTodoInputLight}
                 {...props}
-                onKeyDown={func}
+                onKeyDown={func.addTodo}
                 placeholder="Create a new todo..."
+                onChange={func.inputChange}
+                value={info}
             />
-            <div className={styles.circle} ></div>
+            <div  className={styles.circle} onClick={func.addTodoCLick}>
+            </div>
         </div>
        
     )

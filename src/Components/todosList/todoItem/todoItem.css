@@ -2,6 +2,7 @@
 .listItem {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.445);
 }
@@ -26,6 +27,9 @@ li input {
     cursor: pointer;
 }
 
+li input:hover {
+    border: 1px solid  hsl(235, 32%, 45%);
+}
 li input:after {
     content: url('./icon-check.svg');
     margin-top: 2px;
@@ -45,6 +49,20 @@ li input:checked:after {
     color: grey;
 }
 
+.todo {
+    display: flex;
+    align-items: center;
+}
+
+.crossBLock {
+    display: none;
+    cursor: pointer;
+}
+
+.listItem:hover .crossBLock{
+    display: block;
+}
+
 @media all and (max-width: 900px) {
     .listItem {
         padding: 15px;
@@ -55,5 +73,7 @@ li input:checked:after {
     margin-right: 10px;
    }
 
- 
+   .crossBLock {
+    display: block;
+   }
 }

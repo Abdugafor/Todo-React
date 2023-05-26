@@ -1,4 +1,4 @@
-import React, {  useEffect, useRef, useState } from "react";
+import React, {  useState } from "react";
 import BackgroundImage from '../backgroundImage';
 import Container from '../Container';
 import './App.css'
@@ -23,17 +23,24 @@ const buttons = ['All', 'Active', 'Compleated']
 function App() {
   const [list, setList] = useState(TODOLIST)
   const [isDark, setIsDark] = useState(true)
+  const [InputInfo, setInputInfo] = useState('')
   const [isActive, setIsActive] = useState(buttons[1])
 
-  const inputRef = useRef()
-
+  const inputChange = (e) => {
+    setInputInfo(e.currentTarget.value)  
+  } 
 
   const addTodo = (e) => {
-    const inputValue = e.currentTarget.value
-    if (e.key === 'Enter' && inputValue !== '') {
-        setList(list.concat({title: inputValue, id: generateRandomString()}))
-        e.currentTarget.value = ''
+    if (e.key === 'Enter' && InputInfo !== '') {
+        setList(list.concat({title: InputInfo, done: false, id: generateRandomString()}))
+        setInputInfo('')
     }
+  }
+
+  const addTodoCLick = (e) => {
+      setList(list.concat({title: InputInfo, done: false, id: generateRandomString()}))
+      setInputInfo('')
+      e.currentTarget.value = ''
   }
 
 
@@ -56,6 +63,11 @@ function App() {
       setIsActive(e.currentTarget.textContent)
   }
 
+  const crossClick = (e) => {
+    const TodoId = e.currentTarget.id    
+    setList(oldArr => oldArr.filter(item => item.id !== TodoId))
+  }
+
   return (
     <div className={isDark ? "bg-dark" : "bg-light"}>
       <BackgroundImage img={isDark} />
@@ -65,17 +77,35 @@ function App() {
 
         <MyInput
           placeholder="Create a new todo..."
-          func={addTodo}
+          func={{addTodo, addTodoCLick, inputChange}}
           isDark={isDark}
+          info={InputInfo}
         />
-        <TodosList list={list} isDark={isDark}>
+        <TodosList 
+        list={list} 
+        isDark={isDark}
+        >
           {list.map((todo, index) => 
-                  <TodoItem todo={todo} func={changeDone}/>
-              )}
+            <TodoItem 
+              todo={todo} 
+              func={changeDone} 
+              crossClick={crossClick
+            }/>
+          )}
 
           <TodoBottom list={list}>
-              <Filters isActive={isActive} clickFunc={filtersClick}/>
-              <button type="button" className="clearBtn" onClick={clearDoneTodos}>Clear Completed</button>
+
+              <Filters 
+                isActive={isActive}
+                clickFunc={filtersClick}
+              />
+
+              <button 
+                type="button" 
+                className="clearBtn"
+                onClick={clearDoneTodos}
+              >Clear Completed</button>
+
           </TodoBottom>
         </TodosList>
       </Container>
