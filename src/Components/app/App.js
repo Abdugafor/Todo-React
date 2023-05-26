@@ -41,8 +41,8 @@ function App() {
   }
 
   const changeDone = (e) => {
-    const todoId = e.currentTarget.id
-    // С помошью хука setList найти todo который был выполнен и изменить
+    const currentTodo = list.filter(item => item.id === e.currentTarget.id).map(item => ({...item, done: !item.done}))[0]
+    // setList((todos) => ({...todos, currentTodo}))
   }
 
   return (
