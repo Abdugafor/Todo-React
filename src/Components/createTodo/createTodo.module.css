@@ -2,7 +2,7 @@
     position: relative;
 }
 
-.createTodoInput {
+.createTodoInputDark {
     padding: 20px 20px 20px 65px;
     width: 100%;
     background: hsl(235, 24%, 19%);
@@ -10,6 +10,8 @@
     font-size: 20px;
     border-radius: 4px;
 }
+
+
 
 .circle {
     position: absolute;
@@ -21,4 +23,30 @@
     border-radius: 50%;
     border: 1px solid grey;
     background: inherit;
+    cursor: pointer;
 }
+
+
+.createTodoInputLight{
+    padding: 20px 20px 20px 65px;
+    width: 100%;
+    background: hsl(0, 0%, 98%);
+    color: hsl(235, 24%, 19%);
+    border:  none;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+@media all and (max-width: 900px) {
+    .createTodoInput {
+        font-size: 14px;
+        padding: 15px 18px 15px 50px;
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+
+    }
+}
+

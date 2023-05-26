@@ -1,7 +1,15 @@
-.list {
+.listDark {
     list-style: none;
     color: white;
     margin-top: 20px;
     background: hsl(235, 24%, 19%);
+    border-radius: 4px;
+}
+
+.listLight {
+    list-style: none;
+    color:  hsl(235, 24%, 19%);
+    margin-top: 20px;
+    background: hsl(0, 0%, 98%);
     border-radius: 4px;
 }

@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from "react";
+import React, {  useEffect, useRef, useState } from "react";
 import BackgroundImage from '../backgroundImage';
 import Container from '../Container';
 import './App.css'
@@ -17,12 +17,16 @@ const TODOLIST = [
   {title: 'Programming assignment', done: false},
 ].map(item => ({...item, id: generateRandomString()}))
 
+const buttons = ['All', 'Active', 'Compleated']
+
+
 function App() {
   const [list, setList] = useState(TODOLIST)
   const [isDark, setIsDark] = useState(true)
+  const [isActive, setIsActive] = useState(buttons[1])
+
   const inputRef = useRef()
-  
-  
+
 
   const addTodo = (e) => {
     const inputValue = e.currentTarget.value
@@ -31,6 +35,7 @@ function App() {
         e.currentTarget.value = ''
     }
   }
+
 
   const changeBgImage = () => {
       setIsDark(!isDark)
@@ -41,36 +46,41 @@ function App() {
   }
 
   const changeDone = (e) => {
-    const currentTodo = list.filter(item => item.id === e.currentTarget.id).map(item => ({...item, done: !item.done}))[0]
-    // setList((todos) => ({...todos, currentTodo}))
+
+    const TodoId = e.currentTarget.id
+    setList(prev => prev.map(item => item.id === TodoId ? {...item, done: !item.done} : item))
+
+  }
+
+  const filtersClick = (e) => {
+      setIsActive(e.currentTarget.textContent)
   }
 
   return (
-    <>
+    <div className={isDark ? "bg-dark" : "bg-light"}>
       <BackgroundImage img={isDark} />
       <Container>
 
         <Header changeDarkMode={changeBgImage}/>
 
         <MyInput
-          ref={inputRef}
           placeholder="Create a new todo..."
-          onKeyDown={addTodo}
+          func={addTodo}
+          isDark={isDark}
         />
-
-        <TodosList list={list}>
+        <TodosList list={list} isDark={isDark}>
           {list.map((todo, index) => 
                   <TodoItem todo={todo} func={changeDone}/>
               )}
 
           <TodoBottom list={list}>
-              <Filters />
+              <Filters isActive={isActive} clickFunc={filtersClick}/>
               <button type="button" className="clearBtn" onClick={clearDoneTodos}>Clear Completed</button>
           </TodoBottom>
         </TodosList>
       </Container>
   
-    </>
+    </div>
   )
 }
 

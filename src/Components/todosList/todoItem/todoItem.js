@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import './todoItem.css'
 
 export function TodoItem({todo , func}) {
-    const [checked, setChecked] = useState(false)
-   
+
     return (
         <li className="listItem" >
                 <input 
                     type="checkbox" 
                     id={todo.id} 
-                    checked={checked} 
+                    checked={todo.done} 
                     onClick={func} 
                 />
                 <label 
                     for={todo.id} 
                     key={todo.id} 
+                    className={todo.done ? "done" : ''}
                     id={todo.id} 
                     
                  >{todo.title}</label>
