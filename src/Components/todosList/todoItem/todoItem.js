@@ -3,7 +3,7 @@ import './todoItem.css'
 
 export function TodoItem({todo , func, crossClick}) {
     return (
-        <li className="listItem" >
+        <li className="listItem" key={todo.id}>
             <div className="todo">
                 <input 
                     type="checkbox" 

@@ -19,9 +19,9 @@ export function Filters({isActive, clickFunc}) {
 
             <button 
                 type="button"
-                className={isActive === 'Compleated' ? styles.active : ''}
+                className={isActive === 'Completed' ? styles.active : ''}
                 onClick={clickFunc}
-            >Compleated</button>
+            >Completed</button>
         </div>
     )
 }

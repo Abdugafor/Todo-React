@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import BackgroundImage from '../backgroundImage';
 import Container from '../Container';
 import './App.css'
@@ -11,20 +11,20 @@ import { Filters } from "../todosList/todoBottom/filter/filters";
 import TodoItem from "../todosList/todoItem";
 
 
-const TODOLIST = [
-  {title: 'Wash the dishes', done: false },
-  {title: 'Go for a walk', done: false },
-  {title: 'Programming assignment', done: false},
-].map(item => ({...item, id: generateRandomString()}))
+const TODOLIST = [].map(item => ({...item, id: generateRandomString()}))
 
-const buttons = ['All', 'Active', 'Compleated']
+const buttons = ['All', 'Active', 'Completed']
+
+const listCopy = TODOLIST
+
 
 
 function App() {
   const [list, setList] = useState(TODOLIST)
   const [isDark, setIsDark] = useState(true)
   const [InputInfo, setInputInfo] = useState('')
-  const [isActive, setIsActive] = useState(buttons[1])
+  const [isActive, setIsActive] = useState(buttons[0])
+
 
   const inputChange = (e) => {
     setInputInfo(e.currentTarget.value)  
@@ -62,6 +62,18 @@ function App() {
   const filtersClick = (e) => {
       setIsActive(e.currentTarget.textContent)
   }
+
+  useEffect(() => {
+
+    if (isActive === 'Active') {
+      setList(list.filter(item => !item.done))
+    }else if (isActive === 'Completed') {
+      setList(list.filter(item => item.done))
+    }else {
+      setList(listCopy)
+    }
+  }, [isActive])
+
 
   const crossClick = (e) => {
     const TodoId = e.currentTarget.id    
